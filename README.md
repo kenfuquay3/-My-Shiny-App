@@ -1,61 +1,76 @@
-# -My-Shiny-App
- My Shiny App
- rmarkdown::render("pitch.Rmd")
- 
- file.rename("pitch.html", "index.html")
+install.packages("rsconnect")
+library(rsconnect)
 
-slidify("index.Rmd")
-
- git checkout --orphan gh-pages
-git rm -rf .
-
-library(slidify)
-library(slidifyLibraries)
-publish('gh-pages')
-
-touch .nojekyll
-
-git checkout --orphan gh-pages
-git rm -rf .
-touch .nojekyll
-git add index.html
-git commit -m "Deploy ioslides presentation"
-git push origin gh-pages
 ---
-title: "Pitch: My Shiny App"
+title: "Tree Volume Estimator Pitch"
 author: "Kenzie Fuquay"
-date: "`r Sys.Date()`"
 output: ioslides_presentation
+runtime: shiny
 ---
 
 ## Slide 1: Introduction
 
-Welcome to my pitch!  
-This Shiny app helps users interactively explore data using R.
+This app predicts tree volume based on girth using a simple linear regression.
+
+Built using R's built-in `trees` dataset.
+
+Deployed via RStudio’s shinyapps.io and GitHub.
 
 ---
 
-## Slide 2: The Problem
+## Slide 2: What the App Does
 
-Many users struggle to visualize trends in real-time data.  
-Our app provides an intuitive interface for exploring datasets with live feedback.
+- Users input a tree’s girth (in inches)
+- The app predicts its volume
+- Displays:
+  - A scatterplot of the dataset
+  - A regression line (optional)
+  - A predicted volume value
 
 ---
 
-## Slide 3: The App
+## Slide 3: The Data
 
-The app takes user input via a slider and plots a histogram of eruption waiting times from the `faithful` dataset.  
-Here's a sample of what the output looks like:
+We're using R’s built-in `trees` dataset:
 
-```{r, echo=FALSE}
-hist(faithful$waiting, col = 'skyblue', main = "Histogram of Waiting Times")
-sidebarPanel(
-  sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
-)
-output$distPlot <- renderPlot({
-  x <- faithful[, 2]
-  bins <- seq(min(x), max(x), length.out = input$bins + 1)
-  hist(x, breaks = bins, col = 'gray', border = 'white')
-})
+```{r}
+summary(trees)
+
+
+## How to Use
+
+1. **Choose Girth**: Use the slider to select the tree's girth in inches.
+2. **Toggle Regression Line**: Check or uncheck the box to display the regression line.
+3. **View Prediction**: The app shows the predicted volume and a visualization.
+
+This app is useful for understanding simple linear regression and making quick volume predictions from field measurements.
+
+## Dataset
+
+The app uses the base R `trees` dataset, which contains measurements of the girth, height, and volume of 31 black cherry trees.
+It includes:
+
+Girth (inches)
+
+Height (ft)
+
+Volume (cubic ft)
+
+---
+
+## Slide  4: The Model
+
+Simple linear regression:
+model <- lm(Volume ~ Girth, data = trees)
+coef(model)
+
+---
+
+## Slide 5: Access the App
+
+Try the app here
+
+See the source code on GitHub
+
 
 
