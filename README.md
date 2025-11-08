@@ -51,9 +51,7 @@ The app uses the base R `trees` dataset, which contains measurements of the girt
 It includes:
 
 Girth (inches)
-
 Height (ft)
-
 Volume (cubic ft)
 
 ---
