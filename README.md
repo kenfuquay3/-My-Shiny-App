@@ -1,74 +1,20 @@
-install.packages("rsconnect")
-library(rsconnect)
+# Tree Volume Estimator Pitch
 
----
-title: "Tree Volume Estimator Pitch"
-author: "Kenzie Fuquay"
-output: ioslides_presentation
-runtime: shiny
----
+This repository contains an interactive ioslides presentation (R Markdown) that demonstrates a simple linear regression to predict tree volume from girth using R's built-in `trees` dataset.
 
-## Slide 1: Introduction
+Live demo
+- If deployed: (add your shinyapps.io URL here)
 
-This app predicts tree volume based on girth using a simple linear regression.
+Source
+- Presentation source: presentation.Rmd
 
-Built using R's built-in `trees` dataset.
+How to run locally
+1. Install required packages:
+   ```r
+   install.packages(c("rmarkdown", "shiny", "rsconnect"))
+   ```
+2. In RStudio, open `presentation.Rmd` and click "Run Document" to view locally (or use rmarkdown::run()).
+3. To deploy to shinyapps.io, use rsconnect::deployApp() or the RStudio Publish button.
 
-Deployed via RStudio’s shinyapps.io and GitHub.
-
----
-
-## Slide 2: What the App Does
-
-- Users input a tree’s girth (in inches)
-- The app predicts its volume
-- Displays:
-  - A scatterplot of the dataset
-  - A regression line (optional)
-  - A predicted volume value
-
----
-
-## Slide 3: The Data
-
-We're using R’s built-in `trees` dataset:
-
-```{r}
-summary(trees)
-
-
-## How to Use
-
-1. **Choose Girth**: Use the slider to select the tree's girth in inches.
-2. **Toggle Regression Line**: Check or uncheck the box to display the regression line.
-3. **View Prediction**: The app shows the predicted volume and a visualization.
-
-This app is useful for understanding simple linear regression and making quick volume predictions from field measurements.
-
-## Dataset
-
-The app uses the base R `trees` dataset, which contains measurements of the girth, height, and volume of 31 black cherry trees.
-It includes:
-
-Girth (inches)
-Height (ft)
-Volume (cubic ft)
-
----
-
-## Slide  4: The Model
-
-Simple linear regression:
-model <- lm(Volume ~ Girth, data = trees)
-coef(model)
-
----
-
-## Slide 5: Access the App
-
-Try the app here
-
-See the source code on GitHub
-
-
-
+Notes
+- The presentation is an R Markdown (ioslides) document with runtime: shiny. For deployment as an interactive app, keep it as `.Rmd` and deploy that file (not the README).
