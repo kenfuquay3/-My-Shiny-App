@@ -3,7 +3,7 @@
 This repository contains an interactive ioslides presentation (R Markdown) that demonstrates a simple linear regression to predict tree volume from girth using R's built-in `trees` dataset.
 
 Live demo
-- If deployed: (add your shinyapps.io URL here)
+- If deployed: (http://kenziefuquay22.shinyapps.io/Tree)
 
 Source
 - Presentation source: presentation.Rmd
